@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import React from "react";
+const Header = ({ course }) => {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>{course}</h1>
     </>
-  )
-}
+  );
+};
+const Content = ({ part, exercise }) => {
+  return (
+    <>
+      <h2>
+        {part}
+        {"   "} {exercise}
+      </h2>
+    </>
+  );
+};
+const Total = ({ exercise1, exercises2, exercises3 }) => {
+  const totalExcerisice = exercise1 + exercises2 + exercises3;
+  return (
+    <>
+      <h2>
+        Total of Excersises:{"  "} {totalExcerisice}
+      </h2>
+    </>
+  );
+};
 
-export default App
+export const App = () => {
+  const course = "Half Stack application development";
+  const part1 = "Fundamentals of React";
+  const exercises1 = 10;
+  const part2 = "Using props to pass data";
+  const exercises2 = 7;
+  const part3 = "State of a component";
+  const exercises3 = 14;
+  return (
+    <>
+      <Header course={course} />
+      <Content part={part1} exercise={exercises1} />
+      <Content part={part2} exercise={exercises2} />
+      <Content part={part3} exercise={exercises3} />
+      <Total
+        exercise1={exercises1}
+        exercises2={exercises2}
+        exercises3={exercises3}
+      />
+    </>
+  );
+};
